@@ -19,10 +19,6 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
     }
 
 
-    public void setTestDatabase() {
-        this.Database = "music_schema_test";
-    }
-
     public abstract void create(E entity) throws SQLException;
     public abstract E read(int ID) throws SQLException;
     public abstract void update(E entity) throws SQLException;
