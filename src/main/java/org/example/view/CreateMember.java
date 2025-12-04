@@ -58,7 +58,6 @@ public class CreateMember extends JDialog {
 
 
 
-
     }
 
     private void onCancel() {
