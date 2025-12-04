@@ -55,7 +55,7 @@ public class CreateMember extends JDialog {
         System.out.println(txtName.getText());
         System.out.println(txtEmail.getText());
         System.out.println(txtPhone.getText());
-        //comment
+        //com
 
 
     }
