@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class MemberService {
     public Member createMember(String name, String email, String phoneNumber, Date dt_join) throws SQLException {
@@ -23,5 +24,15 @@ public class MemberService {
         memberDAO.create(member);
 
         return member;
+    }
+
+    public List<Member> getAllMembers() throws SQLException {
+        MemberDAO memberDAO = new MemberDAO();
+        return memberDAO.list();
+    }
+
+    public void deleteMember(int id) throws SQLException {
+        MemberDAO memberDAO = new MemberDAO();
+        memberDAO.delete(id);
     }
 }

@@ -19,9 +19,5 @@ public class ClientService {
         dao.create(client);
 
         return client;
-
-
-
-
     }
 }

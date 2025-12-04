@@ -1,6 +1,9 @@
 package org.example.model.entity;
 
+import org.example.controller.MemberService;
+
 import java.sql.Date;
+import java.util.List;
 
 public class Member extends AbstractEntity {
     private Integer ID = null;
@@ -49,5 +52,9 @@ public class Member extends AbstractEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String toString(){
+        return getID().toString()+": "+getName()+": "+getEmail()+": "+getDt_join()+": "+getPhoneNumber();
     }
 }

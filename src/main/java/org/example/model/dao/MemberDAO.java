@@ -3,6 +3,8 @@ package org.example.model.dao;
 import org.example.model.entity.Member;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDAO extends AbstractDAO<Member>{
     @Override
@@ -66,5 +68,27 @@ public class MemberDAO extends AbstractDAO<Member>{
 
 
         con.close();
+    }
+
+    @Override
+    public List<Member> list() throws SQLException {
+        ArrayList<Member> listMember = new ArrayList<>();
+
+        Connection con = getConnection();
+        String sql = "SELECT * FROM member ORDER BY name ";
+        PreparedStatement pst = con.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) { // While there is a next row of results
+            Member member = new Member();
+            member.setID( rs.getInt("id_member"));
+            member.setName( rs.getString("name"));
+            member.setEmail( rs.getString("email"));
+            member.setPhoneNumber( rs.getString("phone_number"));
+            member.setDt_join( rs.getDate("dt_join"));
+
+            listMember.add(member);
+        }
+
+        return listMember;
     }
 }

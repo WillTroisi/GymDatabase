@@ -3,6 +3,7 @@ package org.example.model.dao;
 import org.example.model.entity.AbstractEntity;
 
 import java.sql.*;
+import java.util.List;
 
 public abstract class AbstractDAO<E extends AbstractEntity> {
     private String ConUrl = "jdbc:mysql://localhost"; //protocol + url
@@ -26,6 +27,7 @@ public abstract class AbstractDAO<E extends AbstractEntity> {
     public abstract E read(int ID) throws SQLException;
     public abstract void update(E entity) throws SQLException;
     public abstract void delete(int ID) throws SQLException;
+    public abstract List<E> list() throws SQLException;
 
 }
 
