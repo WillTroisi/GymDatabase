@@ -13,15 +13,15 @@ public class MainFrame extends JFrame{
     }
 
     public void createMenuBar() {
-//        JMenuBar menuBar = new JMenuBar();
-//
-//        JMenu mnuFile = new JMenu("File");
-//        JMenuItem mniExit =  new JMenuItem("Exit");
-//        mniExit.addActionListener(e ->
-//        {System.exit(0);});
-//        menuBar.add(mniExit);
-//
-//        menuBar.add(mnuFile);
-//        this.setJMenuBar(menuBar);
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu mnuFile = new JMenu("File");
+        JMenuItem mniExit = new JMenuItem("Exit");
+        mniExit.addActionListener(e -> System.exit(0));
+        mnuFile.add(mniExit);
+
+        menuBar.add(mnuFile);
+        this.setJMenuBar(menuBar);
+
     }
 }
