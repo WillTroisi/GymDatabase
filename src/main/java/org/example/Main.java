@@ -32,7 +32,7 @@ public class Main {
 //        Member found = memberDAO.read(member.getID());
 //        System.out.println(found);
         MemberService memberService = new MemberService();
-        memberService.createMember("Hello", "123@3.4", "123-456-765", Date.valueOf(LocalDate.now()));
+        memberService.createMember("Hello", "123@3.4", "123-456-765");
     }
 
 }
