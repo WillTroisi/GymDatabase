@@ -1,5 +1,6 @@
 package org.example;
 import org.example.controller.MemberService;
+import org.example.view.MainFrame;
 
 import java.sql.*;
 
@@ -7,8 +8,8 @@ import java.sql.*;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws SQLException {
-//        MainFrame frame = new MainFrame();
-//        frame.setVisible(true);
+        MainFrame frame = new MainFrame();
+        frame.setVisible(true);
 
 //        ClientDAO clientDAO = new ClientDAO();
 //        clientDAO.setTestDatabase();

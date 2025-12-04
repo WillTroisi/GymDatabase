@@ -5,6 +5,7 @@ import org.example.model.entity.Member;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class CreateMember extends JDialog {
     private JPanel contentPane;
@@ -51,11 +52,13 @@ public class CreateMember extends JDialog {
     private void onCreate() {
 
         MemberService service = new MemberService();
-        //service.createMember(txtName.getText(),txtEmail.getText(),txtPhone.getText());
-        System.out.println(txtName.getText());
-        System.out.println(txtEmail.getText());
-        System.out.println(txtPhone.getText());
-        //coment
+        try {
+            service.createMember(txtName.getText(),txtEmail.getText(),txtPhone.getText());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
 
 
     }
