@@ -15,6 +15,7 @@ public class CrudMember extends JDialog {
     private JButton deleteButton;
     private JButton updateButton;
     private JList lstMembersUI;
+    private JButton refreshButton;
 
     public CrudMember() {
         setContentPane(contentPane);
@@ -60,6 +61,12 @@ public class CrudMember extends JDialog {
                 onDelete();
             }
         });
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                populateUI();
+            }
+        });
     }
 
     private void onCreate() {
@@ -86,8 +93,11 @@ public class CrudMember extends JDialog {
     }
 
     private void onUpdate() {
-        // add your code here if necessary
-        dispose();
+        Member m = (Member) lstMembersUI.getSelectedValue();
+        UpdateMember dialog = new UpdateMember(m);
+        dialog.pack();
+        dialog.setVisible(true);
+
     }
 
     public void populateUI(){

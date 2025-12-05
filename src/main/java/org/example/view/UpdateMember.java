@@ -7,23 +7,35 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 
-public class CreateMember extends JDialog {
+public class UpdateMember extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
+    private JButton buttonUpdate;
     private JButton buttonCancel;
-    private JTextField txtID;
     private JTextField txtName;
     private JTextField txtEmail;
     private JTextField txtPhone;
+    private JTextArea txtAreaName;
+    private JTextArea txtAreaEmail;
+    private JTextArea txtAreaPhone;
+    private JTextArea txtAreaDtJoined;
+    private JTextArea txtAreaID;
 
-    public CreateMember() {
+
+
+    public UpdateMember(Member m) {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
+        getRootPane().setDefaultButton(buttonUpdate);
 
-        buttonOK.addActionListener(new ActionListener() {
+        txtAreaID.append(String.valueOf(m.getID()));
+        txtAreaName.append(m.getName());
+        txtAreaEmail.append(m.getEmail());
+        txtAreaPhone.append(m.getPhoneNumber());
+        txtAreaDtJoined.append(String.valueOf(m.getDt_join()));
+
+        buttonUpdate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onCreate();
+                onUpdate(m);
             }
         });
 
@@ -49,14 +61,37 @@ public class CreateMember extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onCreate() {
-
+    private void onUpdate(Member m) {
         MemberService service = new MemberService();
+
+
+        String name;
+        String email;
+        String phone;
+        if (txtName.getText().equals("")) {
+            name = m.getName();
+        }else{
+            name = txtName.getText();
+        }
+        if (txtEmail.getText().equals("")) {
+            email = m.getEmail();
+
+        }else{
+            email = txtEmail.getText();
+        }
+        if (txtPhone.getText().equals("")) {
+            phone = m.getPhoneNumber();
+        }else{
+            phone = txtPhone.getText();
+        }
+
         try {
-            service.createMember(txtName.getText(),txtEmail.getText(),txtPhone.getText());
+            service.updateMember(m.getID(),name,email,phone);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        dispose();
+
     }
 
     private void onCancel() {
@@ -64,8 +99,10 @@ public class CreateMember extends JDialog {
         dispose();
     }
 
+
     public static void main(String[] args) {
-        CreateMember dialog = new CreateMember();
+        Member m = new Member();
+        UpdateMember dialog = new UpdateMember(m);
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
