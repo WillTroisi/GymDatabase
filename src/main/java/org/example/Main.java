@@ -1,5 +1,7 @@
 package org.example;
 import org.example.controller.MemberService;
+import org.example.model.dao.MemberDAO;
+import org.example.model.entity.Member;
 import org.example.view.MainFrame;
 
 import java.sql.*;
@@ -8,8 +10,8 @@ import java.sql.*;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws SQLException {
-        MainFrame frame = new MainFrame();
-        frame.setVisible(true);
+//        MainFrame frame = new MainFrame();
+//        frame.setVisible(true);
 
 //        ClientDAO clientDAO = new ClientDAO();
 //        clientDAO.setTestDatabase();
@@ -33,7 +35,10 @@ public class Main {
 //        Member found = memberDAO.read(member.getID());
 //        System.out.println(found);
         MemberService memberService = new MemberService();
-        memberService.createMember("Hello", "123@3.4", "123-456-765");
+        System.out.println(memberService.updateMember(14, "Tom", "the@the.fs", "912-453-6546"));
+
+
+
     }
 
 }

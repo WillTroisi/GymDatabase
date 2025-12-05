@@ -51,10 +51,16 @@ public class MemberDAO extends AbstractDAO<Member>{
     @Override
     public void update(Member entity) throws SQLException {
         Connection con = getConnection();
-        String sql = "";
+
+        String sql = "UPDATE member SET name = ?, email = ?, phone_number = ? WHERE id_member = ?";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, entity.getName());
+        pst.setString(2, entity.getEmail());
+        pst.setString(3, entity.getPhoneNumber());
+        pst.setInt(4, entity.getID());
+        pst.executeUpdate();
 
         con.close();
-
     }
 
     @Override

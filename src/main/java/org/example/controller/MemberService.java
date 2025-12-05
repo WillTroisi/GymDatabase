@@ -34,4 +34,21 @@ public class MemberService {
         MemberDAO memberDAO = new MemberDAO();
         memberDAO.delete(id);
     }
+
+    public boolean updateMember(int id, String newName, String newEmail, String newPhoneNumber) throws SQLException {
+        MemberDAO memberDAO = new MemberDAO();
+
+        Member updatedMember = memberDAO.read(id);
+        if (updatedMember == null) {
+            return false;
+        }
+
+        updatedMember.setName(newName);
+        updatedMember.setEmail(newEmail);
+        updatedMember.setPhoneNumber(newPhoneNumber);
+
+        memberDAO.update(updatedMember);
+
+        return true;
+    }
 }
