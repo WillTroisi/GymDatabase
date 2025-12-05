@@ -77,6 +77,7 @@ public class CrudMember extends JDialog {
         if (m != null){
             try {
                 service.deleteMember(m.getID());
+                populateUI();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
