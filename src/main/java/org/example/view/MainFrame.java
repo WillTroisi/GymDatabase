@@ -16,9 +16,19 @@ public class MainFrame extends JFrame{
         JMenuBar menuBar = new JMenuBar();
 
         JMenu mnuFile = new JMenu("File");
+
+        JMenuItem mniMember = new JMenuItem("Member Crud");
+        mniMember.addActionListener( e -> {
+            CrudMember dialog = new CrudMember();
+            dialog.pack();
+            dialog.setVisible(true);
+        });
+        mnuFile.add(mniMember);
+
         JMenuItem mniExit = new JMenuItem("Exit");
         mniExit.addActionListener(e -> System.exit(0));
         mnuFile.add(mniExit);
+
 
         menuBar.add(mnuFile);
         this.setJMenuBar(menuBar);
